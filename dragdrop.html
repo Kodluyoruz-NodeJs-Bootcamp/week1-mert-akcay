@@ -30,22 +30,27 @@
         }
     </style>
     <script>
-        function dragOver(ev) {
-            ev.preventDefault();
-            ev.target.classList.add("drag-over");
-        }
-        
+
+        // This function being called when ondragstart event. This event occurs when user started to drag an element.
         function drag(ev) {
             ev.dataTransfer.setData("text", ev.target.id);
         }
 
+        // This function being called when ondrop event. This event occurs when dragged element is dropped a dropzone.
         function drop(ev) {
             ev.preventDefault();
             var data = ev.dataTransfer.getData("text");
             ev.target.classList.remove("drag-over");
             ev.target.appendChild(document.getElementById(data));
         }
+
+        // This function being called when ondragover event. This event occurs when dragged element is over the dropzone.
+        function dragOver(ev) {
+            ev.preventDefault();
+            ev.target.classList.add("drag-over");
+        }
         
+        // This function being called when ondragleave event. This event occurs when dragged element leaves from dropzone.
         function dragLeave(ev) {
             ev.preventDefault();
             ev.target.classList.remove("drag-over");
